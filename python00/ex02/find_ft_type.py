@@ -12,5 +12,4 @@ def all_thing_is_obj(object: any) -> int:
 			print(object, "is in the kitchen :", type(object))
 		case _:
 			print("Type not found")
-
 	return 42
