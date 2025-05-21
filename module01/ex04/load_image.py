@@ -9,7 +9,7 @@ content in RGB format."""
     try:
         img = Image.open(path)
         rgb_array = np.array(img)
-        print(f"The shape of image is: {rgb_array.shape}")
+        # print(f"The shape of image is: {rgb_array.shape}")
     except Exception as e:
         print(f"{e}")
         return []
