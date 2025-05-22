@@ -4,9 +4,6 @@ from pimp_image import ft_red
 from pimp_image import ft_green
 from pimp_image import ft_blue
 from pimp_image import ft_grey
-import matplotlib.pyplot as plt
-from PIL import Image
-import numpy as np
 
 
 array = ft_load("landscape.jpg")
