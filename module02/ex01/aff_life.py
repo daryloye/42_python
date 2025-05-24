@@ -1,27 +1,33 @@
 from load_csv import load
 import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
+
 
 def main():
-	df = load("life_expectancy_years.csv")
-	country = "France"
-	data = df[df["country"] == country].drop(columns="country")
-	
-	x = data.columns
-	y = data.values.flatten()
+    df = load("life_expectancy_years.csv")
 
-	print(x)
-	print(y)
+    country = "Singapore"
+    data = df[df["country"] == country]		# Filter df to get country
+    if data.empty:
+        raise Exception(f"No data found for country: {country}")
 
-	plt.plot(x, y)
-	plt.savefig("output.png")
+    # data looks like this:
+    #
+    # country	1800	1801	1802	<- columns names
+    # France	34.0	32.3	36.1	<- values
 
-	# sns.displot(df[df["country"] == country])
-	# plt.savefig("output.png")
+    data = data.drop(columns="country")         # Drop 'country' column
+    x = data.columns.astype(int).tolist()	    # Assign column names to x
+    y = data.values.flatten()		        # Assign values to y, make it 1D array
+
+    plt.plot(x, y)
+    plt.title(country + " Life expectancy Projections")
+    plt.xlabel("Year")
+    plt.ylabel("Life expectancy")
+    plt.savefig("output.png")
+
 
 if __name__ == "__main__":
-	try:
-		main()
-	except Exception as e:
-		print(e)
+    try:
+        main()
+    except Exception as e:
+        print(e)
